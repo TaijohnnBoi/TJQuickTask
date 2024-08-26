@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NewBehaviourScript : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class NewBehaviourScript : MonoBehaviour
 
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
+    public Text WINTEXT;
+   
+
+    public GameObject player;
 
     Vector2 velocity;
 
@@ -27,5 +32,13 @@ public class NewBehaviourScript : MonoBehaviour
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + velocity * moveSpeed * Time.fixedDeltaTime);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Win");
+        {
+            WINTEXT.gameObject.SetActive(true);
+        }
     }
 }

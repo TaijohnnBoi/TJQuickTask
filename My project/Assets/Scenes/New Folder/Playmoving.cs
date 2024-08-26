@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class Playmoving : MonoBehaviour
 {
     public float speed;
     private float Move;
-
+    public TextMeshProUGUI WINTEXT;
     public float jump;
 
     public bool isJumping;
@@ -50,4 +53,14 @@ public class Playmoving : MonoBehaviour
         }
 
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Win");
+        {
+            WINTEXT.gameObject.SetActive(true);
+            Time.timeScale = 0;
+        }
+    }
 }
+
